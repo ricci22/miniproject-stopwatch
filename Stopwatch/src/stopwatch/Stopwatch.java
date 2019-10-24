@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 public class Stopwatch extends JFrame {
   
+  private static final long serialVersionUID = 1L;
   JButton startButton = new JButton();
   JButton stopButton = new JButton();
   JButton exitButton = new JButton();
