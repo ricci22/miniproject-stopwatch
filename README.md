@@ -1,6 +1,7 @@
 # miniproject-stopwatch
 Create mini project to learn GUI and Event Method
-the source code located at miniproject-stopwatch/Stopwatch/src/stopwatch/Stopwatch.Java
+
+The source code located at miniproject-stopwatch/Stopwatch/src/stopwatch/Stopwatch.Java
 
 In this project there are event, startButton, stopButton, exitButton.
 
