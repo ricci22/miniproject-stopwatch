@@ -16,6 +16,7 @@ public class Stopwatch extends JFrame {
   JTextField stopTextField = new JTextField();
   JTextField elapsedTextField = new JTextField();
   
+  // declare class variables
   long startTime;
   long stopTime;
   double elapsedTime;
@@ -28,29 +29,44 @@ public class Stopwatch extends JFrame {
   public Stopwatch() {
     // Frame constructor
     setTitle("Stopwatch Application");
+    addWindowListener(new WindowAdapter(){
+      public void windowClosing(WindowEvent e){
+        exitForm(e);
+      }
+    });
     getContentPane().setLayout(new GridBagLayout());
-    
+    // add controls and listener for event
     GridBagConstraints gridConstraints = new GridBagConstraints();
     
     startButton.setText("Start Timing");
     gridConstraints.gridx = 0;
     gridConstraints.gridy = 0;
     getContentPane().add(startButton, gridConstraints);
-//    startButton.addActionListener(new ActionListener()) {
-//      public void actionPerformed(ActionEvent e) {
-//        startButtonActionPerformed(e);
-//      }
-//    });
+    startButton.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e) {
+        startButtonActionPerformed(e);
+      }
+    });
     
     stopButton.setText("Stop Timing");
     gridConstraints.gridx = 0;
     gridConstraints.gridy = 1;
     getContentPane().add(stopButton, gridConstraints);
+    stopButton.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e) {
+        stopButtonActionPerformed(e);
+      }
+    });
     
     exitButton.setText("Exit");
     gridConstraints.gridx = 0;
     gridConstraints.gridy = 2;
     getContentPane().add(exitButton, gridConstraints);
+    exitButton.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e) {
+        exitButtonActionPerformed(e);
+      }
+    });
     
     startLabel.setText("Start Time");
     gridConstraints.gridx = 1;
@@ -86,13 +102,24 @@ public class Stopwatch extends JFrame {
     getContentPane().add(elapsedTextField, gridConstraints);
     
     pack();
-    
-    addWindowListener(new WindowAdapter() {
-      @Override
-      public void windowClosing(WindowEvent e) {
-        exitForm(e);
-      }
-    });
+  }
+  // Adding event method
+  private void startButtonActionPerformed(ActionEvent e) {
+    // click of stop timing button
+    startTime = System.currentTimeMillis();
+    startTextField.setText(String.valueOf(startTime));
+    stopTextField.setText("");
+    elapsedTextField.setText("");
+  }
+  private void stopButtonActionPerformed(ActionEvent e) {
+    // click of stop timing button
+    stopTime = System.currentTimeMillis();
+    stopTextField.setText(String.valueOf(stopTime));
+    elapsedTime = (stopTime - startTime)/1000.0;
+    elapsedTextField.setText(String.valueOf(elapsedTime));
+  }
+  private void exitButtonActionPerformed(ActionEvent e) {
+    System.exit(0);
   }
   private void exitForm(WindowEvent e) {
     System.exit(0);
