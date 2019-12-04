@@ -1,4 +1,6 @@
 # miniproject-stopwatch
+Nanda Rizki Nasution - 2101705712
+
 Create mini project to learn GUI and Event Method
 
 The source code located at miniproject-stopwatch/Stopwatch/src/stopwatch/Stopwatch.Java
